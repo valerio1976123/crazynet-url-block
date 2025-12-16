@@ -1,0 +1,51 @@
+[
+  {
+    "pattern": "amazon",
+    "category": "Shopping",
+    "subcategory": "Online",
+    "merchant": "Amazon",
+    "priority": 100
+  },
+  {
+    "pattern": "spotify",
+    "category": "Abbonamenti",
+    "subcategory": "Musica",
+    "merchant": "Spotify",
+    "priority": 100
+  },
+  {
+    "pattern": "netflix",
+    "category": "Abbonamenti",
+    "subcategory": "Video",
+    "merchant": "Netflix",
+    "priority": 100
+  },
+  {
+    "pattern": "uber|bolt",
+    "category": "Trasporti",
+    "subcategory": "Ride-hailing",
+    "merchant": "Uber/Bolt",
+    "priority": 90
+  },
+  {
+    "pattern": "trenitalia|italo",
+    "category": "Trasporti",
+    "subcategory": "Treno",
+    "merchant": "Treno",
+    "priority": 90
+  },
+  {
+    "pattern": "esselunga|conad|coop|carrefour|lidl",
+    "category": "Spesa",
+    "subcategory": "Supermercato",
+    "merchant": "Supermercato",
+    "priority": 80
+  },
+  {
+    "pattern": "enel|eni|a2a|acea",
+    "category": "Utenze",
+    "subcategory": "Energia",
+    "merchant": "Utenze",
+    "priority": 80
+  }
+]

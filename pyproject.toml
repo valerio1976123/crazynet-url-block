@@ -1,0 +1,11 @@
+[project]
+name = "automatic-expense-manager"
+version = "0.1.0"
+description = "Gestore spese automatico (CLI + SQLite)"
+requires-python = ">=3.10"
+
+[project.scripts]
+expense-manager = "expense_manager.cli:main"
+
+[tool.ruff]
+line-length = 100
