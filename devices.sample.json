@@ -1,0 +1,55 @@
+{
+  "defaults": {
+    "outputDir": "./backups",
+    "timeoutSeconds": 45,
+    "parallelism": 4,
+    "acceptUnknownHostKey": true,
+    "ignoreTlsErrors": false
+  },
+  "devices": [
+    {
+      "name": "core-sw1",
+      "vendor": "cisco",
+      "type": "ssh",
+      "host": "10.0.0.1",
+      "port": 22,
+      "username": "backup",
+      "password": "${ENV:CISCO_BACKUP_PW}",
+      "commands": [
+        "terminal length 0",
+        "show running-config"
+      ]
+    },
+    {
+      "name": "fw-fgt1",
+      "vendor": "fortigate",
+      "type": "fortigate-api",
+      "host": "10.0.0.2",
+      "useHttps": true,
+      "ignoreTlsErrors": true,
+      "accessToken": "${ENV:FORTI_TOKEN}",
+      "scope": "global",
+      "vdom": "root"
+    },
+    {
+      "name": "pa-fw1",
+      "vendor": "paloalto",
+      "type": "paloalto-api",
+      "host": "10.0.0.3",
+      "useHttps": true,
+      "ignoreTlsErrors": true,
+      "apiKey": "${ENV:PA_API_KEY}"
+    },
+    {
+      "name": "mtk-edge1",
+      "vendor": "mikrotik",
+      "type": "ssh",
+      "host": "10.0.0.4",
+      "username": "backup",
+      "password": "${ENV:MTK_PW}",
+      "commands": [
+        "/export compact"
+      ]
+    }
+  ]
+}
