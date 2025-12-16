@@ -1,0 +1,4 @@
+netmiko>=4.3,<5
+PyYAML>=6.0,<7
+requests>=2.31,<3
+

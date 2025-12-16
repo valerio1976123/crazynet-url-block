@@ -1,0 +1,53 @@
+devices:
+  - name: core-cisco-1
+    platform: cisco_ios
+    host: 10.0.0.1
+    method: ssh
+    username: admin
+    password: ${CISCO_PASS}
+    enable_secret: ${CISCO_ENABLE:-}
+    timeout_s: 30
+    extras:
+      # opzionale: override comandi / netmiko_device_type
+      # commands:
+      #   - terminal length 0
+      #   - show running-config
+      # netmiko_device_type: cisco_ios
+
+  - name: fw-fortigate-1
+    platform: fortigate
+    host: 10.0.0.2
+    method: ssh
+    username: admin
+    password: ${FORTI_PASS}
+    extras:
+      # di default usa: config global + show
+      # per includere tutto:
+      # commands:
+      #   - config global
+      #   - show full-configuration
+      use_timing: true
+
+  - name: edge-mikrotik-1
+    platform: mikrotik_routeros
+    host: 10.0.0.3
+    method: ssh
+    username: admin
+    password: ${MIKROTIK_PASS}
+    extras:
+      # default: export hide-sensitive
+      # commands: export hide-sensitive
+      use_timing: true
+
+  - name: fw-paloalto-1
+    platform: panos
+    host: 10.0.0.4
+    method: panos_api
+    username: admin
+    password: ${PANOS_PASS}
+    verify_ssl: false
+    # alternativa: api_key: ${PANOS_API_KEY}
+    extras:
+      scheme: https
+      # base_url: https://10.0.0.4:443
+
