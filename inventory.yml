@@ -1,0 +1,43 @@
+# Esempio inventario per ndcb.py
+# Suggerimento: usa ${VAR} per leggere da variabili d'ambiente.
+
+devices:
+  - name: core-sw1
+    host: 10.0.0.1
+    vendor: cisco_ios
+    transport: ssh
+    username: admin
+    password: ${CISCO_PASS}
+
+  - name: fgt-branch1
+    host: 10.0.0.2
+    vendor: fortinet
+    transport: ssh
+    username: admin
+    password: ${FORTI_PASS}
+
+  - name: mikrotik-lab
+    host: 10.0.0.3
+    vendor: mikrotik_routeros
+    transport: ssh
+    username: admin
+    password: ${MIKROTIK_PASS}
+
+  - name: pa-fw1
+    host: 10.0.0.4
+    vendor: paloalto_panos
+    # Preferibile: API export config
+    transport: panos_api
+    api_key: ${PAN_API_KEY}
+    verify_tls: false
+
+# Opzionale: sovrascrive i comandi di default per un device
+#  - name: custom
+#    host: 10.0.0.5
+#    vendor: cisco_ios
+#    transport: ssh
+#    username: admin
+#    password: ${PASS}
+#    commands:
+#      - terminal length 0
+#      - show running-config
