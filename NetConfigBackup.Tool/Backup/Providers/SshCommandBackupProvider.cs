@@ -1,5 +1,5 @@
 using System.Text;
-using NetConfigBackup.Tool.Utils;
+using NetConfigBackup.Core;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 

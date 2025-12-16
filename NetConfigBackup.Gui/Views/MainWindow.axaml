@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:NetConfigBackup.Gui.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="650"
+        x:Class="NetConfigBackup.Gui.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="NetConfigBackup - Devices">
+
+  <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*,*" Margin="12" RowSpacing="10" ColumnSpacing="12">
+
+    <!-- Top: config path + load/save -->
+    <Grid Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="8">
+      <TextBlock VerticalAlignment="Center" Text="Config" />
+      <TextBox Grid.Column="1" Text="{Binding ConfigPath, Mode=TwoWay}" Watermark="devices.json" />
+      <Button Grid.Column="2" Command="{Binding LoadCommand}" Content="Load" />
+      <Button Grid.Column="3" Command="{Binding SaveCommand}" Content="Save" />
+    </Grid>
+
+    <!-- Status -->
+    <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#1A000000" CornerRadius="6" Padding="8">
+      <TextBlock Text="{Binding StatusMessage}" />
+    </Border>
+
+    <!-- Left: list + selection -->
+    <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="Auto,*" RowSpacing="8">
+      <StackPanel Orientation="Horizontal" Spacing="8">
+        <Button Command="{Binding AddCommand}" Content="Add" />
+        <Button Command="{Binding DeleteCommand}" Content="Delete" />
+        <Button Command="{Binding SelectAllCommand}" Content="Select all" />
+        <Button Command="{Binding SelectNoneCommand}" Content="Select none" />
+      </StackPanel>
+
+      <Border Grid.Row="1" BorderThickness="1" BorderBrush="#33000000" CornerRadius="6" Padding="8">
+        <ScrollViewer>
+          <ListBox ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <DockPanel LastChildFill="True" Margin="0,2">
+                  <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsSelected, Mode=TwoWay}" VerticalAlignment="Center" />
+                  <TextBlock Text="{Binding DisplayLabel}" Margin="8,0,0,0" VerticalAlignment="Center" />
+                </DockPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </ScrollViewer>
+      </Border>
+    </Grid>
+
+    <!-- Right: editor -->
+    <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="#33000000" CornerRadius="6" Padding="12">
+      <StackPanel Spacing="10">
+        <TextBlock Text="Device" FontWeight="SemiBold" />
+
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="8">
+          <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Name" />
+          <TextBox  Grid.Row="0" Grid.Column="1" Text="{Binding SelectedDevice.Name, Mode=TwoWay}" />
+
+          <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Vendor" />
+          <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Vendors}" SelectedItem="{Binding SelectedDevice.Vendor, Mode=TwoWay}" />
+
+          <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Text="Type" />
+          <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedDevice.Type, Mode=TwoWay}" />
+
+          <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Text="Host/IP" />
+          <TextBox  Grid.Row="3" Grid.Column="1" Text="{Binding SelectedDevice.Host, Mode=TwoWay}" Watermark="10.0.0.1" />
+
+          <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Port" />
+          <TextBox  Grid.Row="4" Grid.Column="1" Text="{Binding SelectedDevice.Port, Mode=TwoWay}" Watermark="22" />
+
+          <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Text="Username" />
+          <TextBox  Grid.Row="5" Grid.Column="1" Text="{Binding SelectedDevice.Username, Mode=TwoWay}" />
+
+          <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Text="Password" />
+          <TextBox  Grid.Row="6" Grid.Column="1" Text="{Binding SelectedDevice.Password, Mode=TwoWay}" PasswordChar="*" />
+        </Grid>
+
+        <TextBlock Opacity="0.7" TextWrapping="Wrap">
+          Nota: la password viene salvata nel JSON in chiaro se la inserisci qui. In alternativa puoi usare ${ENV:NOME_VAR} nel campo Password.
+        </TextBlock>
+      </StackPanel>
+    </Border>
+
+  </Grid>
+</Window>

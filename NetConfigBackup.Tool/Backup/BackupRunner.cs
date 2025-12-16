@@ -1,18 +1,10 @@
-using System.Text.Json;
 using NetConfigBackup.Tool.Backup.Providers;
-using NetConfigBackup.Tool.Utils;
+using NetConfigBackup.Core;
 
 namespace NetConfigBackup.Tool.Backup;
 
 public sealed class BackupRunner
 {
-    private static readonly JsonSerializerOptions JsonOptions = new()
-    {
-        PropertyNameCaseInsensitive = true,
-        ReadCommentHandling = JsonCommentHandling.Skip,
-        AllowTrailingCommas = true,
-    };
-
     private readonly List<IBackupProvider> _providers =
     [
         new PaloAltoApiBackupProvider(),
@@ -31,8 +23,7 @@ public sealed class BackupRunner
         BackupConfigFile cfg;
         try
         {
-            var json = await File.ReadAllTextAsync(options.ConfigPath);
-            cfg = JsonSerializer.Deserialize<BackupConfigFile>(json, JsonOptions) ?? new BackupConfigFile();
+            cfg = await BackupConfigIo.LoadAsync(options.ConfigPath);
         }
         catch (Exception ex)
         {

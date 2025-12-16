@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetConfigBackup.Tool", "NetConfigBackup.Tool\NetConfigBackup.Tool.csproj", "{EDCC3687-7923-48B0-B349-4E5A581AD2DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetConfigBackup.Core", "NetConfigBackup.Core\NetConfigBackup.Core.csproj", "{BC1D6A3F-3F21-4E6E-9871-0B06F48A64C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetConfigBackup.Gui", "NetConfigBackup.Gui\NetConfigBackup.Gui.csproj", "{31C45403-E426-406E-87D0-F28E88A451E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{EDCC3687-7923-48B0-B349-4E5A581AD2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDCC3687-7923-48B0-B349-4E5A581AD2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDCC3687-7923-48B0-B349-4E5A581AD2DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1D6A3F-3F21-4E6E-9871-0B06F48A64C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1D6A3F-3F21-4E6E-9871-0B06F48A64C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1D6A3F-3F21-4E6E-9871-0B06F48A64C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1D6A3F-3F21-4E6E-9871-0B06F48A64C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31C45403-E426-406E-87D0-F28E88A451E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C45403-E426-406E-87D0-F28E88A451E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C45403-E426-406E-87D0-F28E88A451E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C45403-E426-406E-87D0-F28E88A451E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
