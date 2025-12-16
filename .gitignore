@@ -1,0 +1,10 @@
+data/*.sqlite
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
+__pycache__/
+*.pyc
+.venv/
+network-config-backup/backups/
+network-config-backup/**/bin/
+network-config-backup/**/obj/

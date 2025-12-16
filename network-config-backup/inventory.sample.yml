@@ -1,0 +1,25 @@
+# Inventory di esempio (usa ${ENV:VAR} per segreti)
+devices:
+  - name: core-sw1
+    type: cisco_ios
+    host: 10.0.0.1
+    username: admin
+    password: ${ENV:CORE_SW1_PASS}
+
+  - name: forti-fw1
+    type: fortigate
+    host: 10.0.0.2
+    username: admin
+    password: ${ENV:FORTI_FW1_PASS}
+
+  - name: mtik-edge
+    type: mikrotik
+    host: 10.0.0.3
+    username: admin
+    password: ${ENV:MTIK_PASS}
+
+  - name: pa-fw1
+    type: paloalto
+    host: https://10.0.0.4
+    apiKey: ${ENV:PA_API_KEY}
+    verifyTls: false
