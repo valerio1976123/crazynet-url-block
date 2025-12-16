@@ -149,7 +149,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     s_b = sub.add_parser("budget", help="Gestione budget", parents=[common])
     sub_b = s_b.add_subparsers(dest="budget_cmd", required=True)
-    s_bs = sub_b.add_parser("set", help="Imposta budget categoria")
+    s_bs = sub_b.add_parser("set", help="Imposta budget categoria", parents=[common])
     s_bs.add_argument("month", help="YYYY-MM")
     s_bs.add_argument("category", help="Categoria")
     s_bs.add_argument("amount", help="Importo budget (es. 500)")
