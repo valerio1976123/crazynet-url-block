@@ -1,0 +1,13 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# backups output
+backups/
+
+# editor
+.vscode/
+.idea/
